@@ -34,3 +34,17 @@ def contacts(request):
         'title': 'Контакти',
         'description': 'Контактна інформація нашої компанії.'
     })
+    
+def contacts_country(request, country):
+    countries = {
+        'france': 'Франція',
+        'ukraine': 'Україна',
+        'austria': 'Австрія'
+    }
+
+    country_name = countries.get(country.lower(), country.capitalize())
+
+    return render(request, 'company/section.html', {
+        'title': 'Контакти — ' + country_name,
+        'description': 'Контактна інформація компанії в країні: ' + country_name
+    })

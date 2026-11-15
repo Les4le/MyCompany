@@ -10,5 +10,6 @@ urlpatterns = [
 
     re_path(r'^about(?:/.*)?$', views.about),
 
-    re_path(r'^(?:contacts|contact)(?:/.*)?$', views.contacts),
+    path('contacts/', views.contacts),
+    path('contacts/<str:country>/', views.contacts_country),
 ]
