@@ -48,3 +48,18 @@ def contacts_country(request, country):
         'title': 'Контакти — ' + country_name,
         'description': 'Контактна інформація компанії в країні: ' + country_name
     })
+    
+def other_news(request, othernews):
+    the_othernews = {
+        'ukraine': 'Новини в Україні',
+        'france': 'Новини в Франції',
+        'austria': 'Новини в Австрії'
+    }
+
+    othernews_name = the_othernews.get(othernews.lower(), othernews.capitalize())
+
+    return render(request, 'company/section.html', {
+        'title': ' Новини — ' + othernews_name,
+        'description': 'Інформація про новини в країні: ' + othernews_name
+    })
+    

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <style>
+      body {
+        background-color: #1b1b1b;
+        color: white;
+        font-family: Arial;
+        margin: 40px;
+      }
+
+      h1 {
+        color: #4da6ff;
+      }
+
+      a {
+        color: #66b3ff;
+        margin-right: 15px;
+      }
+
+      .content {
+        background-color: #292929;
+        padding: 25px;
+        border-radius: 10px;
+      }
+
+      .content h3 {
+        color: #4da6ff;
+      }
+
+      .subsections {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+
+    <nav>
+      <a href="/">Головна</a>
+      <a href="/news/">Новини</a>
+      <a href="/management/">Керівництво</a>
+      <a href="/about/">Про компанію</a>
+      <a href="/contacts/">Контакти</a>
+      <a href="/media/">Медіацентр</a>
+    </nav>
+
+    <div class="subsections">
+      {% for section in sections %}
+        <a href="{% if section.slug == 'home' %}/media/{% else %}/media/{{ section.slug }}/{% endif %}">{{ section.label }}</a>
+      {% endfor %}
+    </div>
+
+    <div class="content">
+      <h2>{{ subtitle }}</h2>
+      <p>{{ description }}</p>
+      {% for item in items %}
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
